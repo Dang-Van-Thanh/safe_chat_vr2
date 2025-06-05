@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>Secure Chat AES</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="chat-wrapper">
+
+        <!-- Cột trái: Phòng chat và danh sách online -->
+       <div id="sidebar">
+    <button onclick="createRoom()">+ Tạo phòng mới</button>
+    <ul id="rooms-list">
+      <!-- Danh sách phòng -->
+    </ul>
+
+    <h4>Người trong phòng</h4>
+    <ul id="online-users">
+        <!-- Sẽ hiển thị dưới dạng như:
+        <li>🧑 Nam (Phòng 1)</li>
+        <li>👩 Lan (Phòng 3)</li>
+        -->
+    </ul>
+</div>
+
+        <!-- Cột phải: Khu vực chat -->
+        <div id="chat-container">
+            <h2>🔐 Secure Chat (AES) 🔐</h2>
+            <div id="user-info">
+                <input id="username" placeholder="Tên bạn..." autocomplete="off" />
+                <input id="key" type="password" placeholder="Nhập khóa AES..." autocomplete="off" />
+            </div>
+
+            <div id="messages">
+                <!--
+                Ví dụ tin nhắn:
+                <div class="message sent">Tin nhắn bạn gửi sẽ có class "sent" và căn bên phải</div>
+                <div class="message received">Tin nhắn người khác có class "received" và căn bên trái</div>
+                -->
+            </div>
+
+            <div id="input-area">
+                <input id="message" placeholder="Nhập tin nhắn..." autocomplete="off" />
+                <button onclick="sendMessage()">Gửi</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
